@@ -19,7 +19,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 320, 
     height: 120, 
-    icon: path.join(__dirname, '/icons/icon-64.png')
+    icon: path.join(__dirname, '/icon.png')
   });
 
   // and load the index.html of the app.
