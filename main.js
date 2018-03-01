@@ -1,9 +1,7 @@
-const electron = require('electron')
-const {Menu} = require('electron');
+const electron = require('electron');
 // Module to control application life.
 const app = electron.app;
 const ipcMain = electron.ipcMain;
-const Tray = electron.Tray;
 const globalShortcut = electron.globalShortcut;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
@@ -33,18 +31,7 @@ function createWindow () {
 
   // Open the DevTools.
   //Enable this for development
-  mainWindow.webContents.openDevTools();
-
-  //resize all the webview on the main window resize
-  mainWindow.on('resize', () => {
-    const [width, height] = mainWindow.getContentSize();
-    for (let wc of webContents.getAllWebContents()) {
-      // Check if `wc` belongs to a webview in the `win` window.
-      if (wc.hostWebContents && wc.hostWebContents.id === mainWindow.webContents.id) {
-        wc.setSize({ normal: { width: width, height: height } });
-      }
-    }
-  });
+  //mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -54,49 +41,17 @@ function createWindow () {
     mainWindow = null
   });
   
-  const template = [
-    {
-      label: 'Menu',
-      submenu: [
-        {label: 'Show/Hide App', accelerator: 'CommandOrControl+Shift+Space', click: () => mainWindow.webContents.send('showhide', 'ping')},
-        {label: 'Play/Pause', accelerator: 'CommandOrControl+Shift+P', click: () => mainWindow.webContents.send('playpause', 'ping')}
-      ]
-    }
-  ]
-  if (process.platform === 'darwin') {
-    template.unshift({
-      label: app.getName(),
-      submenu: [
-        {role: 'about'},
-        {type: 'separator'},
-        {role: 'services', submenu: []},
-        {type: 'separator'},
-        {role: 'hide'},
-        {role: 'hideothers'},
-        {role: 'unhide'},
-        {type: 'separator'},
-        {role: 'quit'}
-      ]
-    })
-  
-  }
-  
-  const menu = Menu.buildFromTemplate(template);
-  Menu.setApplicationMenu(menu);
-  
-  globalShortcut.register('CommandOrControl+Shift+Space', () => mainWindow.webContents.send('showhide', 'ping'));
-  globalShortcut.register('CommandOrControl+Shift+P', () => mainWindow.webContents.send('playpause', 'ping'));
-
   globalShortcut.unregister('CommandOrControl+W');
-  //globalShortcut.unregister('CommandOrControl+R');
-  // const menu = Menu.buildFromTemplate(template);
-  // Menu.setApplicationMenu(menu);
+  globalShortcut.unregister('CommandOrControl+R');
+
+  globalShortcut.register('CommandOrControl+Shift+Space', () => mainWindow.webContents.send('playpause', 'ping'));
+  app.dock.hide();
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

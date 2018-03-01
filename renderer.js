@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const ipcRenderer = require('electron').ipcRenderer;
 
 const player = document.getElementById('player'),
     playBtn = document.getElementById('playBtn'),
@@ -45,7 +46,6 @@ const removeActiveBtns = () => {
 const timeBoxStart = (event) => {
     const ele = event.target;
     inPlayer = getRandom(musics, ele.getAttribute('data-files'));
-    console.log(inPlayer);
     nowPlaying = -1;
     playerTimer = 0;
     removeActiveBtns();
@@ -79,5 +79,6 @@ setInterval(() => {
 min30Btn.addEventListener('click', timeBoxStart);
 min60Btn.addEventListener('click', timeBoxStart);
 playBtn.addEventListener('click', playPause);
+ipcRenderer.on('playpause', playPause);
 
 player.onended = () => playNextTrack();
