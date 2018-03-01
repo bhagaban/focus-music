@@ -1,0 +1,7 @@
+.git
+.nyc_output
+node_modules
+npm-debug.log
+.vscode
+jot-darwin-x64
+jot-linux-x64

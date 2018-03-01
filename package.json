@@ -1,0 +1,33 @@
+{
+  "name": "focus-music",
+  "version": "1.0.0",
+  "description": "A minimal music player that enhances your focus while working.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build-osx": "node packager.js --platform darwin",
+    "build-linux": "node packager.js --platform linux",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasanthv/jot.git"
+  },
+  "keywords": [
+    "electron",
+    "browser"
+  ],
+  "author": "Vasanth V",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vasanthv/jot/issues"
+  },
+  "homepage": "https://github.com/vasanthv/jot#readme",
+  "devDependencies": {
+    "electron": "^1.8.2",
+    "electron-packager": "^11.0.1"
+  },
+  "dependencies": {
+    "mousetrap": "^1.6.1"
+  }
+}
