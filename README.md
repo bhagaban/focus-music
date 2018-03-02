@@ -1,7 +1,7 @@
 # Focus Music App
-This tiny app help your get more focus while you are working. The music in te app stimulates the focus part of your brian to create more focus. It also helps you timebox your work into 30min & 60min blocks.
+This tiny app help your get more focus while you are working. The music in the app stimulates the focus part of your brain to create more focus. It also helps you timebox your work into 30min & 60min blocks.
 
-Download the mac app [here](https://www.dropbox.com/s/le6picqmshfswct/focus-music.mac.zip?dl=0). 
+Download the macOS app [here](https://www.dropbox.com/s/le6picqmshfswct/focus-music.mac.zip?dl=0). 
 
 ## For linux
 ```
