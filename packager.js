@@ -3,10 +3,11 @@ const path = require('path');
 
 const argv = require('yargs').argv;
 
-const supportedPlatforms = ['linux', 'darwin'];
+const supportedPlatforms = ['linux', 'darwin', 'win32'];
 const platfromIcons = {
   'linux': path.join(__dirname, 'icon.png'), 
-  'darwin': path.join(__dirname, 'icon.icns')
+  'darwin': path.join(__dirname, 'icon.icns'),
+  'win32': path.join(__dirname, 'icon.png'),
 };
 
 if(supportedPlatforms.indexOf(argv.platform) >= 0 ){
