@@ -70,10 +70,7 @@ function playNextTrack(){
 const playPause = () => (player.paused && inPlayer.length > 0) ? doPlay() : doPause();
 
 setInterval(() => {
-    if(!player.paused){
-        playerTimer++;
-        progress.style.width = ((playerTimer * 100) / (60 * 30 * inPlayer.length))+'%';
-    }
+    if(!player.paused) progress.style.width = ((++playerTimer * 100) / (60 * 30 * inPlayer.length))+'%';
 }, 1000);
 
 min30Btn.addEventListener('click', timeBoxStart);

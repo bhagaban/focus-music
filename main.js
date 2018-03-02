@@ -19,6 +19,9 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 320, 
     height: 120, 
+    resizable: false,
+    title: 'Focus Music',
+    fullscreen: false,
     icon: path.join(__dirname, '/icon.png')
   });
 
